@@ -2,12 +2,11 @@
 //Sprint 1, topic 4: POO 1
 
 //Exercise 1
-
 class Employee {
     private string $name;
     private float $salary;
     public function __construct(string $name, float $salary) {
-        $this->name = $nombre;
+        $this->name = $name;
         $this->salary = $salary;
     }
     public function getName() : string {
@@ -22,18 +21,21 @@ class Employee {
     public function setSalary(float $salary) {
         $this->salary = $salary;
     }
-    public function initialize(string $name, float $salary) : string {
-        $newEployee = new Employee($name, $salary);
-        $message = $name . " was added to employees list <br>";
-        return $message;
+    public static function initialize(string $name, float $salary) : Employee {
+        $newEmployee = new Employee($name, $salary);
+        return $newEmployee;
     }
-    public function print(string $name, float $salary) : string {
-        if ($salary > 6000) {
-            $message = $name . " must pay taxes <br>";
+    public function print() : string {
+        if ($this->getSalary() > 6000) {
+            $message = $this->getName() . " must pay taxes. \n";
         } else {
-            $message = $name . " is tax exempt <br>";
+            $message = $this->getName() . " is tax exempt. \n";
         }
         return $message;
     }
 }
+$employee1 = Employee::initialize("Juan Perez", 1800);
+echo $employee1->print();
+$employee2 = Employee::initialize("Ana Lopez", 7000);
+echo $employee2->print();
 ?>

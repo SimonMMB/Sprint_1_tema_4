@@ -2,7 +2,6 @@
 //Sprint 1, topic 4: POO 1
 
 //Exercise 2
-
 class Shape {
     private float $height;
     private float $width;
