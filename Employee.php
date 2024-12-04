@@ -27,10 +27,10 @@ class Employee {
         return $newEmployee;
     }
     public function print() : string {
-        if ($this->getSalary() > 6000) {
-            $message = $this->getName() . " must pay taxes. \n";
+        if ($this->salary > 6000) {
+            $message = $this->name . " must pay taxes. \n";
         } else {
-            $message = $this->getName() . " is tax exempt. \n";
+            $message = $this->name . " is tax exempt. \n";
         }
         return $message;
     }
