@@ -1,7 +1,5 @@
 <?php
 declare(strict_types = 1);
-//Sprint 1, topic 4: POO 1
-
 //Exercise 2
 require_once 'Shape.php';
 class Rectangle extends Shape {
@@ -10,6 +8,4 @@ class Rectangle extends Shape {
         return $area;
     }
 }
-$newRectangle = new Rectangle(10, 4);
-echo "Area rectangle = " . $newRectangle->areaRectangle() . " cm2 \n";
 ?>
