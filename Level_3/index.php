@@ -1,22 +1,26 @@
 <?php
 require_once "Cinema.php";
 require_once "Movie.php";
-//DECLARATION OF GLOBAL ARRAY $cinema
+
 $cinemas = [];
-//FUNCTION TO FIND CINEMA INDEX
-function searchCinemaIndex(string $nameOfCinema) : int {
-    global $cinemas;
+
+function searchCinemaIndex(array $cinemas, string $nameOfCinema) : int 
+{
     $cinemaIndex = -1;
     $nameOfCinema = strtolower($nameOfCinema);
+
     for ($i = 0; $i < count($cinemas); $i++) {
         if (strtolower($cinemas[$i]->getName()) == $nameOfCinema) {
             $cinemaIndex = $i;
             break;
         }
     }
+
     return $cinemaIndex;
 }
-//EXECUTION (CONSOLE INTERACTION)
+
+//Execution (console interaction)
+
 do {
     echo "Hello! What do you want to do?" . PHP_EOL
         . "1) Add cinema/s." . PHP_EOL
@@ -27,6 +31,7 @@ do {
         . "6) Exit." . PHP_EOL;
     $num = fgets(STDIN);
     $num = trim($num);
+    
     switch ($num) {
         case 1:
             echo "How many cinemas do you want to add?" . PHP_EOL;
@@ -44,6 +49,7 @@ do {
                 echo $nameOfCinema . " was added to list." . PHP_EOL;
             }
             break;
+
         case 2:
             echo "How many movies do you want to add?" . PHP_EOL;
             $numOfMovies = fgets(STDIN);
@@ -68,7 +74,7 @@ do {
                         echo "Put the name of cinema number " . ($j + 1) . ":" . PHP_EOL;
                         $nameOfCinema = fgets(STDIN);
                         $nameOfCinema = trim($nameOfCinema);
-                        $cinemaIndex = searchCinemaIndex($nameOfCinema);
+                        $cinemaIndex = searchCinemaIndex($cinemas, $nameOfCinema);
                         if ($cinemaIndex != -1) {
                             $cinemas[$cinemaIndex]->addMovie($movie);
                             $rightCinema = 1;
@@ -80,13 +86,14 @@ do {
                 }
             }
             break;
+
         case 3:
             $rightCinema = 0;
             while ($rightCinema == 0) {
                 echo "Put the name of the cinema:" . PHP_EOL;
                 $nameOfCinema = fgets(STDIN);
                 $nameOfCinema = trim($nameOfCinema);
-                $cinemaIndex = searchCinemaIndex($nameOfCinema);
+                $cinemaIndex = searchCinemaIndex($cinemas, $nameOfCinema);
                 if ($cinemaIndex != -1) {
                     echo $cinemas[$cinemaIndex]->printMovies();
                     $rightCinema = 1;
@@ -95,13 +102,14 @@ do {
                 }
             }
             break;
+
         case 4:
             $rightCinema = 0;
             while ($rightCinema == 0) {
                 echo "Put the name of the cinema:" . PHP_EOL;
                 $nameOfCinema = fgets(STDIN);
                 $nameOfCinema = trim($nameOfCinema);
-                $cinemaIndex = searchCinemaIndex($nameOfCinema);
+                $cinemaIndex = searchCinemaIndex($cinemas, $nameOfCinema);
                 if ($cinemaIndex != -1) {
                     $movies = $cinemas[$cinemaIndex]->getMovies();
                     $maxDuration = 0;
@@ -118,6 +126,7 @@ do {
             }
             echo "Longest movie: " . $longestMovie . PHP_EOL;
             break;
+
         case 5:
                 echo "Put the name of the director:" . PHP_EOL;
                 $director = fgets(STDIN);

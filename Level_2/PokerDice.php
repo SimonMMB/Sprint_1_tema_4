@@ -7,23 +7,33 @@ enum Face : string {
     case Seven = '7';
     case Eight = '8';
 }
-class PokerDice {
+
+class PokerDice 
+{
     private Face $face;
-    private int $numberOfThrows;
+    private static int $numberOfThrows;
     
-    public function __construct() {
-        $this->numberOfThrows = 0;
+    public function __construct() 
+    {
+        self::$numberOfThrows = 0;
     }
-    public function throwDice() : void {
+
+    public static function getNumberOfThrows(): int 
+    {
+        return self::$numberOfThrows;
+    }
+
+    public function throwDice() 
+    {
         $faces = Face::cases();
         $randomFace = $faces[array_rand($faces)];
         $this->face = $randomFace;
-        $this->numberOfThrows++;
+        self::$numberOfThrows++;
     }
-    public function shapeName() : Face {
+
+    public function shapeName(): Face 
+    {
         return $this->face;
     }
-    public function getNumberOfThrows() : int {
-        return $this->numberOfThrows;
-    }
 }
+?>
