@@ -11,13 +11,8 @@ enum Face : string {
 class PokerDice 
 {
     private Face $face;
-    private static int $numberOfThrows;
+    private static int $numberOfThrows = 0;
     
-    public function __construct() 
-    {
-        self::$numberOfThrows = 0;
-    }
-
     public static function getNumberOfThrows(): int 
     {
         return self::$numberOfThrows;
